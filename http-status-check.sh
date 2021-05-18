@@ -7,9 +7,13 @@ echo -e "[+] Please enter subdomain list name/path : \c"
 read file_name
 
 i=1  
-while read line; do  
+while read subdomain; 
+do  
   
 #Reading each line  
-echo "$line"  
+response=$(curl -Is $subdomain | head -1)
+
+echo "[*] Response for subdomain $subdomain is => $response"
+ 
 i=$((i+1))  
 done < $file_name
